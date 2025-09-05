@@ -1,20 +1,17 @@
 package progetto.mp.santoro.daniele;
 
 public class ScontoServizi implements CalcoloPrezzoStrategy {
+	private int sogliaServizi;
+	private Servizio servizioBonus;
 
-	private final int sogliaServizi;
-	private final double prezzoBonus;
-
-	public ScontoServizi(int sogliaServizi, double prezzoBonus) {
+	public ScontoServizi(int sogliaServizi, Servizio servizioBonus) {
 		this.sogliaServizi = sogliaServizi;
-		this.prezzoBonus = prezzoBonus;
+		this.servizioBonus = servizioBonus;
 	}
-	
+
 	@Override
-    public double calcolaPrezzo(double prezzoBase, Utente utente) {
-        return utente.getNumeroServizi() >= sogliaServizi
-                ? prezzoBase - prezzoBonus
-                : prezzoBase;
-    }
+	public double calcolaPrezzo(double prezzoBase, Utente utente) {
+		return utente.getNumeroServizi() >= sogliaServizi ? prezzoBase - servizioBonus.getPrezzo() : prezzoBase;
+	}
 
 }

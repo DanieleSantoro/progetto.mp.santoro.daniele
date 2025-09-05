@@ -5,7 +5,7 @@ import java.util.Collection;
 public class ServizioSingolo implements Servizio {
 
 	private final String nome;
-	private final double prezzo;
+	private double prezzo;
 	private final int durata;
 	private final Collection<Prenotazione> prenotazioni;
 	private final PrenotazioneFactory factory;
@@ -33,7 +33,7 @@ public class ServizioSingolo implements Servizio {
 	public int getDurata() {
 		return durata;
 	}
-	
+
 	public Collection<Prenotazione> getPrenotazioni() {
 		return prenotazioni;
 	}
