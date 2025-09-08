@@ -1,6 +1,7 @@
 package progetto.mp.santoro.daniele;
 
 public class ScontoServizi implements CalcoloPrezzoStrategy {
+	
 	private int sogliaServizi;
 	private Servizio servizioBonus;
 

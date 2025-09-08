@@ -22,6 +22,7 @@ public class PacchettoServiziTest {
         servizi.add(massaggio);
         servizi.add(sauna);
         pacchetto = new PacchettoServizi("Relax Total", servizi);
+        
     }
 
     private ServizioSingolo creaServizio(String nome, double prezzo, int durata) {

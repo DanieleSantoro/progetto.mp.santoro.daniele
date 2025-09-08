@@ -11,5 +11,7 @@ public interface Servizio {
 	void prenota(Utente utente);
 
 	String mostraDettagli();
+	
+	void accetta(ServizioVisitor visitor);
 
 }

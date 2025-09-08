@@ -5,7 +5,7 @@ import java.util.Collection;
 public class ServizioSingolo implements Servizio {
 
 	private final String nome;
-	private double prezzo;
+	private final double prezzo;
 	private final int durata;
 	private final Collection<Prenotazione> prenotazioni;
 	private final PrenotazioneFactory factory;
@@ -47,6 +47,11 @@ public class ServizioSingolo implements Servizio {
 	@Override
 	public String mostraDettagli() {
 		return nome + " | Prezzo: " + prezzo + " euro | Durata: " + durata + " min";
+	}
+
+	@Override
+	public void accetta(ServizioVisitor visitor) {
+		visitor.visitaServizio(this);
 	}
 
 }
