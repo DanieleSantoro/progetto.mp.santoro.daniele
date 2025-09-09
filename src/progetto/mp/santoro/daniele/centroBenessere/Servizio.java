@@ -1,19 +1,14 @@
 package progetto.mp.santoro.daniele.centroBenessere;
 
-import progetto.mp.santoro.daniele.utils.ServizioVisitor;
+import progetto.mp.santoro.daniele.utils.VisitorServizio;
 
 public interface Servizio {
 
-	String getNome();
+    String getNome();
 
-	double getPrezzo();
+    double getPrezzo();
 
-	int getDurata();
-
-	void prenota(Utente utente);
-
-	String mostraDettagli(int livello, boolean mostraTotale);
-
-	void accetta(ServizioVisitor visitor);
-
+    int getDurata();
+    
+    void accetta(VisitorServizio visitor);
 }

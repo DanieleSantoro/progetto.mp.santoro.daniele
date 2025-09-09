@@ -1,32 +1,48 @@
 package progetto.mp.santoro.daniele.centroBenessere;
 
 import java.util.Collection;
+import java.util.Objects;
 
 public class Utente {
 
-	private final String nome;
-	private final Collection<Servizio> serviziPrenotati;
+    private final String nome;
+    private final Collection<Servizio> serviziPrenotati;
 
-	public Utente(String nome, Collection<Servizio> serviziPrenotati) {
-		this.nome = nome;
-		this.serviziPrenotati = serviziPrenotati;
-	}
+    public Utente(String nome, Collection<Servizio> serviziPrenotati) {
+        this.nome = nome;
+        this.serviziPrenotati = serviziPrenotati;
+    }
 
-	public void prenotaServizio(Servizio servizio) {
-		serviziPrenotati.add(servizio);
-		servizio.prenota(this);
-	}
+    public void prenotaServizio(Servizio servizio) {
+        this.serviziPrenotati.add(servizio);
+    }
 
-//	public Collection<Servizio> getServiziPrenotati() {
-//		return serviziPrenotati;
-//	}
+    public int getNumeroServiziPrenotati() {
+        return serviziPrenotati.size();
+    }
 
-	public int getNumeroServizi() {
-		return serviziPrenotati.size();
-	}
+    public String getNome() {
+        return nome;
+    }
+    
+    public double getPrezzoTotalePrenotazioni() {
+    	return serviziPrenotati.stream().mapToDouble(Servizio::getPrezzo).sum();
+    }
+    
+    public int getDurataTotalePrenotazioni() {
+    	return serviziPrenotati.stream().mapToInt(Servizio::getDurata).sum();
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Utente utente = (Utente) o;
+        return Objects.equals(nome, utente.nome);
+    }
 
-	public String getNome() {
-		return nome;
-	}
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome);
+    }
 }

@@ -3,25 +3,32 @@ package progetto.mp.santoro.daniele.utils;
 import progetto.mp.santoro.daniele.centroBenessere.PacchettoServizi;
 import progetto.mp.santoro.daniele.centroBenessere.ServizioSingolo;
 
-public class VisitorTitoli implements ServizioVisitor {
-    private final StringBuilder titoli;
-
-    public VisitorTitoli(StringBuilder titoli) { 
-        this.titoli = titoli; 
-    }
+public class VisitorTitoli implements VisitorServizio {
+    private final StringBuilder titoli = new StringBuilder();
 
     @Override
-    public void visitaServizio(ServizioSingolo servizio) {
+    public void visitaServizioSingolo(ServizioSingolo servizio) {
         titoli.append("- ").append(servizio.getNome()).append("\n");
     }
+    
+    @Override
+    public void visitaPacchettoServizi(PacchettoServizi pacchetto) {
+        titoli.append("[Pacchetto: ").append(pacchetto.getNome()).append("]\n");
+        pacchetto.getServizi().forEach(servizio -> servizio.accetta(this));
+    }
+
+    public String getTitoli() {
+        return titoli.toString();
+    }
 
     @Override
-    public void visitaPacchetto(PacchettoServizi pacchetto) {
-        titoli.append("[Pacchetto: ").append(pacchetto.getNome()).append("]\n");        
-        pacchetto.visitaFigli(this);
+    public void visitaDecoratorScontato(DecoratorServizioScontato decoratore) {
+        titoli.append("- ").append(decoratore.getNome()).append("\n");
+    }
+    
+    @Override
+    public void visitaDecoratorConSupplemento(DecoratorServizioConSupplemento decoratore) {
+        titoli.append("- ").append(decoratore.getNome()).append("\n");
     }
 
-    public String getTitoli() { 
-        return titoli.toString(); 
-    }
 }
