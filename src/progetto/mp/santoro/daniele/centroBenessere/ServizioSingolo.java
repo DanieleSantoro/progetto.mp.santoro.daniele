@@ -35,10 +35,10 @@ public class ServizioSingolo implements Servizio {
         visitor.visitaServizioSingolo(this);
     }
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ServizioSingolo that = (ServizioSingolo) o;
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        ServizioSingolo that = (ServizioSingolo) obj;
         return Double.compare(that.prezzo, prezzo) == 0 &&
                durata == that.durata &&
                Objects.equals(nome, that.nome);
