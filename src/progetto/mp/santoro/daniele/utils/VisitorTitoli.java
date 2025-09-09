@@ -16,11 +16,7 @@ public class VisitorTitoli implements VisitorServizio {
         titoli.append("[Pacchetto: ").append(pacchetto.getNome()).append("]\n");
         pacchetto.getServizi().forEach(servizio -> servizio.accetta(this));
     }
-
-    public String getTitoli() {
-        return titoli.toString();
-    }
-
+    
     @Override
     public void visitaDecoratorScontato(DecoratorServizioScontato decoratore) {
         titoli.append("- ").append(decoratore.getNome()).append("\n");
@@ -29,6 +25,10 @@ public class VisitorTitoli implements VisitorServizio {
     @Override
     public void visitaDecoratorConSupplemento(DecoratorServizioConSupplemento decoratore) {
         titoli.append("- ").append(decoratore.getNome()).append("\n");
+    }
+
+    public String getTitoli() {
+        return titoli.toString();
     }
 
 }
